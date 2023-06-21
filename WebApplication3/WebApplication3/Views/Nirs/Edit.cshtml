@@ -1,0 +1,70 @@
+﻿
+@model WebApplication3.Models.NirsModel
+
+@{
+    ViewBag.Title = "Редактировать запись";
+}
+
+<h2>@ViewBag.Title</h2>
+<style>
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+        margin: 20px 0;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Название проекта</h4>
+        @Html.TextBoxFor(model => model.ProjectName, new { @class = "form-control" })
+
+        <h4>Название научной работы</h4>
+        @Html.TextBoxFor(model => model.ResearchName, new { @class = "form-control" })
+
+        <h4>Имя студента</h4>
+        @Html.TextBoxFor(model => model.StudentName, new { @class = "form-control" })
+
+        <h4>Название университета</h4>
+        @Html.TextBoxFor(model => model.UniversityName, new { @class = "form-control" })
+
+        <h4>Дата начала</h4>
+        @Html.TextBoxFor(model => model.StartDate, "{0:d}", new { @class = "form-control" })
+
+        <h4>Номер телефона</h4>
+        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+                <style>
+                    .btn.btn-default {
+                        display: inline-block;
+                        border: 1px solid #999;
+                        border-radius: 3px;
+                        background-color: #999;
+                        color: #fff;
+                        font-size: 16px;
+                        padding: 10px 20px;
+                        text-align: center;
+                        text-decoration: none;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+                        margin: 10px 10px 0px 0px;
+                    }
+
+                    .btn.btn-default:hover {
+                        background-color: #fff;
+                        color: #333;
+                    }
+                </style>
+                @Html.ActionLink("Вернуться к списку", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}

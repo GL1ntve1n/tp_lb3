@@ -1,0 +1,73 @@
+﻿@model WebApplication3.Models.NirsModel
+
+@{
+    ViewBag.Title = "Удалить проект";
+}
+
+<h2>@ViewBag.Title</h2>
+<style>
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+        margin: 20px 0;
+    }
+</style>
+
+<h3>Вы уверены, что хотите удалить этот проект?</h3>
+<div>
+    <h4>Название проекта:</h4>
+    <p>@Model.ProjectName</p>
+</div>
+<div>
+    <h4>Название научной работы:</h4>
+    <p>@Model.ResearchName</p>
+</div>
+<div>
+    <h4>Имя студента:</h4>
+    <p>@Model.StudentName</p>
+</div>
+<div>
+    <h4>Название университета:</h4>
+    <p>@Model.UniversityName</p>
+</div>
+<div>
+    <h4>Дата начала:</h4>
+    <p>@Model.StartDate.ToShortDateString()</p>
+</div>
+<div>
+    <h4>Номер телефона:</h4>
+    <p>@Model.PhoneNumber</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Удалить" class="btn btn-default" /> 
+        <style>
+            .btn.btn-default, a {
+                display: inline-block;
+                border: 1px solid #999;
+                border-radius: 3px;
+                background-color: #999;
+                color: #fff;
+                font-size: 16px;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+                margin: 10px 10px 0px 0px;
+            }
+
+            .btn.btn-default, a:hover {
+                background-color: #fff;
+                color: #333;
+            }
+
+        </style>
+        @Html.ActionLink("Отмена", "Index", new { @class = "btn btn-default" })
+    </div>
+}

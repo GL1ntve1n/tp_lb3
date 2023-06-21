@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Список проектов";
+}
+
+@using WebApplication3.Models
+@model List<NirsModel>
+
+<h2>@ViewBag.Title</h2>
+
+<style>
+    h2 {
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+        
+        margin: 20px 0;
+    }
+
+    .main-btn {
+        display: inline-block;
+        border: none;
+        border-radius: 3px;
+        background-color: #999;
+        color: #fff;
+        font-size: 16px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .main-btn:hover {
+        background-color: #fff;
+        color: #333;
+    }
+    p a {
+        display: inline-block;
+        border: none;
+        border-radius: 3px;
+        background-color: #999;
+        color: #fff;
+        font-size: 16px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    p a:hover {
+        background-color: #fff;
+        color: #333;
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Добавить проект", "Create")
+</p>
+
+<style>
+    th{
+        padding: 0px 45px 0px 0px;
+    }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].ProjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].ResearchName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].UniversityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].StartDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResearchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniversityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = Model.IndexOf(item) }, new { @class = "main-btn" }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = Model.IndexOf(item) }, new { @class = "main-btn" })
+            </td>
+        </tr>
+    }
+</table>
